@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Documents page{% endblock %}
+
+{% block content %}
+<h1>Documents page</h1>
+<br>
+<div class="container">
+    <form action="POST" class="form-control" style="color:white">
+        {{ form.doc_id.label() }}
+        {{ form.doc_id(class="form-control", placeholder="ID") }}
+        {{ form.doc_tit.label() }}
+        {{ form.doc_tit(class="form-control", placeholder="Title") }}
+        {{ form.doc_numop.label() }}
+        {{ form.doc_numop(class="form-control", placeholder="Number of Pages") }}
+        {{ form.doc_cat.label() }}
+        {{ form.doc_cat(class="form-control", placeholder="Category") }}
+        {{ form.doc_auth.label() }}
+        {{ form.doc_auth(class="form-control", placeholder="Authors") }}
+        <br>
+        {{ form.submit(class = "btn btn-lg btn-block btn-primary") }}
+    </form>
+</div>
+<br>
+<table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Number of pages</th>
+        <th scope="col">Category</th>
+        <th scope="col">Authors</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for doc in DOCUMENTS %}  
+      <tr>
+        <th scope="row">{{ doc.ID }}</th>
+        <td>{{ doc.title }}</td>
+        <td>{{ doc.number_of_pages }}</td>
+        <td>{{ doc.category }}</td>
+        <td>{{ doc.authors }}</td>
+        <td>
+            <button type = "button" class="btn btn-danger">Delete</button>
+            <button type = "button" class="btn btn-outline-info">???</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
