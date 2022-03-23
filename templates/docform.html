@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Documents page{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="{{ url_for('form') }}" method="POST" class="form-control" style="color:white">
+        <div class="mb-3">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                placeholder="id" name="id">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                placeholder="title" name="title">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                placeholder="number of pages" name="number_of_pages">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                placeholder="authors" name="authors">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                placeholder="category" name="category">
+            </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

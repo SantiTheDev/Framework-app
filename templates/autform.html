@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Documents page{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="{{ url_for('form') }}" method="POST" class="form-control" style="color:white">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+            placeholder="name" name="name">
+        </div>
+          <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+</div>
+{% endblock %}

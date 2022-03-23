@@ -1,5 +1,3 @@
-from turtle import title
-
 
 AUTHORS = [
     {
@@ -9,7 +7,7 @@ AUTHORS = [
 
 DOCUMENTS = [
     {
-        'ID' : 1,
+        'id' : 1,
         'title': 'how2basic',
         'number_of_pages': 100,
         'category': 'NA',
@@ -17,7 +15,7 @@ DOCUMENTS = [
 
     },
     {
-        'ID' : 1,
+        'id' : 1,
         'title': 'how2basic',
         'number_of_pages': 100,
         'category': 'NA',

@@ -3,10 +3,8 @@ class Authors():
     def __init__(self,name: str):
         self.name = name
 
-    def __str__(self):
-        return {
-            "name": self.name
-            }
+    def donothing(self):
+        pass
 
 class Document():
     # this class define the characteristics of a document
@@ -17,11 +15,5 @@ class Document():
         self.category = category
         self.authors = authors
 
-    def __str__(self):
-        return {
-            "id": self.id, 
-            "title": self.title,
-            "number of pages": self.number_of_pages,
-            "category": self.category,
-            "authors":self.authors 
-            }
+    def donothing(self):
+        pass

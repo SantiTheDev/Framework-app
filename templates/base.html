@@ -26,18 +26,20 @@
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/documents">Documents</a>
+                <a class="nav-link" href="{{url_for('documents')}}">Documents</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/authors">Authors</a>
+                <a class="nav-link" href="{{url_for('authors')}}">Authors</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
       <br>
+      
       {% block content %}
       {% endblock %}
+      
       <div class="container">
         <footer class="py-3 my-4">
           <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -60,8 +62,7 @@
   </body>
   <style>
       body {
-        background-color: #212121;
-        color: white;
+        background-color: rgba(76, 51, 122, 0.5);
           
       }
   </style>

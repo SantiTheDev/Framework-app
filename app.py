@@ -1,8 +1,10 @@
+from turtle import title
+from unicodedata import category
+from urllib.request import Request
 from flask import Flask, render_template, request, url_for, redirect
 from markupsafe import escape
 from models import Document, Authors
 from db import DOCUMENTS,AUTHORS
-from Forms import regist_doc
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8f8866aec15fb97de69229e4'
@@ -13,32 +15,47 @@ def home():
     return render_template('home.html')
 
 @app.route("/documents", methods=['GET', 'POST'])
-def add_documents():
-    form = regist_doc()
-    if form.validate_on_submit():
-        doc = Document(
-            form.doc_id.data,
-            form.doc_tit.data,
-            form.doc_numop.data,
-            form.doc_cat.data,
-            form.doc_auth.data
-            )
+def documents():
+    Request = request
+    return render_template('documents.html', DOCUMENTS = DOCUMENTS, request=Request)
 
-        DOCUMENTS.append(doc.__str__.__dict__())
-        return redirect(url_for('home'))
+@app.route('/add_document', methods = ['GET'])
+def add_document():
+    return render_template('docform.html')
 
-    return render_template('documents.html', DOCUMENTS = DOCUMENTS, form=form)
 
-@app.route('/authors')
-@app.route('/authors/<name>')
-def authors_profile(name = None):
+@app.route('/authors', methods=['GET', 'POST'])
+def authors(name = None):
     # show the user profile for that user
-    return render_template('authors.html', name = name)
+    return render_template('authors.html', AUTHORS = AUTHORS )
+
+@app.route('/add_author', methods=['GET', 'POST'])
+def add_author():
+    return render_template('autform.html')
+
+@app.route('/form', methods=["POST"])
+def form():
+    if request.form.get("name"):
+        name = request.form.get("name")
+        author = Authors(name)
+        AUTHORS.append(author.__dict__)
+    else:
+        id = request.form.get("id")
+        title = request.form.get("title")
+        numberOfPages= request.form.get("number_of_pages")
+        authors= request.form.get("authors")
+        category= request.form.get("category")
+
+        doc = Document(id,title,numberOfPages,category,authors)
+        DOCUMENTS.append(doc.__dict__)
+
+    
+    return render_template('submitform.html')
 
 
 @app.route('/about')
 def about():
-    return 'The about page'
+    return render_template('index.html')
 
 
     
